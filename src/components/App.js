@@ -1,34 +1,37 @@
 
 import React, { useState } from 'react';
-import './App.css';
+import '../styles/App.css';
 
-const TABS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'features', label: 'Features' },
-];
+
+const Tab = ({ tabName, activeTab, handleTabClick }) => {
+  const isActive = activeTab === tabName;
+  const tabId = `${tabName}-tab`;
+
+  return (
+    <div
+      className={`tab ${isActive ? 'active' : ''}`}
+      id={tabId}
+      onClick={() => handleTabClick(tabName)}
+    >
+      {tabName}
+    </div>
+  );
+};
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(TABS[0].id);
+  const [activeTab, setActiveTab] = useState('Home');
 
-  const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
   };
 
   return (
     <div className="tabs">
-      {TABS.map((tab) => (
-        <div
-          key={tab.id}
-          className={`tab ${activeTab === tab.id ? 'active' : ''}`}
-          id={`${tab.id}-tab`}
-          onClick={() => handleTabClick(tab.id)}
-        >
-          {tab.label}
-        </div>
-      ))}
+      <Tab tabName="Home" activeTab={activeTab} handleTabClick={handleTabClick} />
+      <Tab tabName="About" activeTab={activeTab} handleTabClick={handleTabClick} />
+      <Tab tabName="Features" activeTab={activeTab} handleTabClick={handleTabClick} />
       <div className="viewport">
-        Pages Go Here
+        Pages Go Here - {activeTab}
       </div>
     </div>
   );
