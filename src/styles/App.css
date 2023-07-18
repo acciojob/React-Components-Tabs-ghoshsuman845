@@ -1,12 +1,19 @@
-h1 {
-    color: #27aedb;
-    text-align: center;
-    }
-    
+.tabs {
+  display: flex;
+}
 
-button{
-    color: #27aedb;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+.tab {
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: lightblue;
+}
+
+.viewport {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid lightgray;
 }
